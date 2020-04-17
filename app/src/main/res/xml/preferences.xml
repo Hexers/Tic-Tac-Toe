@@ -14,8 +14,20 @@
         android:entryValues="@array/rounding_values"
         android:defaultValue="@string/rounding_default" />
     <EditTextPreference
+        android:key="player_one_name"
+        android:title="@string/player_one_name_title"
+        android:summary="@string/player_one_name_summary"
+        android:defaultValue="" />
+    <EditTextPreference
+        android:key="player_two_name"
+        android:title="@string/player_two_name_title"
+        android:summary="@string/player_two_name_summary"
+        android:defaultValue="" />
+<!--
+    <EditTextPreference
         android:key="pref_name"
         android:title="@string/name_title"
         android:summary="@string/name_summary"
         android:defaultValue="" />
+-->
 </PreferenceScreen>

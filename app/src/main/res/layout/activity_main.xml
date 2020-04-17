@@ -1,18 +1,177 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:padding="10dp" >
 
+
+    <!-- Player 1 -->
     <TextView
+        android:id="@+id/namePlayerOneTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:padding="5dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="40dp"
+        android:text="@string/namePlayerOne"
+        android:textSize="20sp" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <!-- Versus-->
+    <TextView
+        android:id="@+id/versus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/namePlayerOneTextView"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:padding="5dp"
+        android:text="@string/versus"
+        android:textSize="20sp" />
+
+    <!-- Player 2 -->
+    <TextView
+        android:id="@+id/namePlayerTwoTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/versus"
+        android:padding="5dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/namePlayerTwo"
+        android:textSize="20sp" />
+
+    <!-- Tile 1-->
+    <Button
+        android:id="@+id/tileOneButton"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_below="@id/versus"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginLeft="40dp"
+        android:text="@string/tile_one_name"
+        android:textSize="20sp" />
+
+    <!-- Tile 2-->
+    <Button
+        android:id="@+id/tileTwoButton"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_below="@id/versus"
+        android:layout_toRightOf="@+id/tileOneButton"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="5dp"
+        android:text="@string/tile_two_name"
+        android:textSize="20sp" />
+
+    <!-- Tile 3-->
+    <Button
+        android:id="@+id/tileThreeButton"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_below="@id/versus"
+        android:layout_toRightOf="@+id/tileTwoButton"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="40dp"
+        android:text="@string/tile_three_name"
+        android:textSize="20sp" />
+
+    <!-- Tile 4-->
+    <Button
+        android:id="@+id/tileFourButton"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_below="@+id/tileOneButton"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginLeft="40dp"
+        android:text="@string/tile_four_name"
+        android:textSize="20sp" />
+
+    <!-- Tile 5-->
+    <Button
+        android:id="@+id/tileFiveButton"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_below="@+id/tileTwoButton"
+        android:layout_toRightOf="@+id/tileOneButton"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="5dp"
+        android:text="@string/tile_five_name"
+        android:textSize="20sp" />
+
+    <!-- Tile 6-->
+    <Button
+        android:id="@+id/tileSixButton"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_below="@+id/tileThreeButton"
+        android:layout_toRightOf="@+id/tileTwoButton"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="40dp"
+        android:text="@string/tile_three_name"
+        android:textSize="20sp" />
+
+    <!-- Tile 7-->
+    <Button
+        android:id="@+id/tileSevenButton"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_below="@+id/tileFourButton"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginLeft="40dp"
+        android:text="@string/tile_seven_name"
+        android:textSize="20sp" />
+
+    <!-- Tile 8-->
+    <Button
+        android:id="@+id/tileEightButton"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_below="@+id/tileFiveButton"
+        android:layout_toRightOf="@+id/tileSevenButton"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="5dp"
+        android:text="@string/tile_eight_name"
+        android:textSize="20sp" />
+
+    <!-- Tile 9-->
+    <Button
+        android:id="@+id/tileNineButton"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_below="@+id/tileFiveButton"
+        android:layout_toRightOf="@+id/tileEightButton"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="40dp"
+        android:text="@string/tile_nine_name"
+        android:textSize="20sp" />
+
+    <!-- Game Messages -->
+
+    <TextView
+        android:id="@+id/gamemessagesLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tileEightButton"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:padding="5dp"
+        android:text="@string/game_messages_label"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <!-- New Game-->
+    <Button
+        android:id="@+id/newGameButton"
+        android:layout_width="324dp"
+        android:layout_height="75dp"
+        android:layout_below="@+id/gamemessagesLabel"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:text="@string/new_game"
+        android:textSize="20sp" />
+
+</RelativeLayout>
