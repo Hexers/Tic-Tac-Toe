@@ -2,6 +2,7 @@ package com.hexers.tictactoe;
 
 import java.text.NumberFormat;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.KeyEvent;
@@ -46,6 +47,7 @@ public class MainActivity extends Activity
     private Button tileSevenButton;
     private Button tileEightButton;
     private Button tileNineButton;
+    private Button newGameButton;
 
     // define instance variables that should be saved
     private String billAmountString = "";
@@ -79,6 +81,7 @@ public class MainActivity extends Activity
         tileSevenButton = (Button) findViewById(R.id.tileSevenButton);
         tileEightButton = (Button) findViewById(R.id.tileEightButton);
         tileNineButton = (Button) findViewById(R.id.tileNineButton);
+        newGameButton = (Button) findViewById(R.id.newGameButton);
 
         // set the listeners
         tileOneButton.setOnClickListener(this);
@@ -90,6 +93,7 @@ public class MainActivity extends Activity
         tileSevenButton.setOnClickListener(this);
         tileEightButton.setOnClickListener(this);
         tileNineButton.setOnClickListener(this);
+        newGameButton.setOnClickListener(this);
 
 
         // set the default values for the preferences
@@ -203,56 +207,55 @@ public class MainActivity extends Activity
         return false;
     }
 
-    /*
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.tileOneButton:
-
+                tileOneButton.setText("X");
+                tileOneButton.setBackgroundColor(Color.parseColor("#7598ff"));
+                tileOneButton.setTextSize(50f);
                 break;
+
             case R.id.tileTwoButton:
-
+                tileTwoButton.setText("O");
+                tileTwoButton.setBackgroundColor(Color.parseColor("#ff5c5c"));
+                tileTwoButton.setTextSize(50f);
                 break;
+
             case R.id.tileThreeButton:
-
+                tileThreeButton.setText("X");
                 break;
+
             case R.id.tileFourButton:
-
+                tileFourButton.setText("X");
                 break;
+
             case R.id.tileFiveButton:
-
+                tileFiveButton.setText("X");
                 break;
+
             case R.id.tileSixButton:
-
+                tileSixButton.setText("X");
                 break;
+
             case R.id.tileSevenButton:
-
+                tileSevenButton.setText("X");
                 break;
+
             case R.id.tileEightButton:
-
+                tileEightButton.setText("X");
                 break;
+
             case R.id.tileNineButton:
-
+                tileNineButton.setText("X");
                 break;
+
             case R.id.newGameButton:
 
                 break;
         }
     }
-     */
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.tileOneButton:
-                tipPercent=tipPercent-.01f;
-                calculateAndDisplay();
-            break;
-            case R.id.tileTwoButton:
-                tipPercent=tipPercent+.01f;
-                calculateAndDisplay();
-            break;
-        }
-    }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

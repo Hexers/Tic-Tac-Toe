@@ -3,4 +3,12 @@
     <color name="colorPrimary">#6200EE</color>
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
+    <color name="colorVersus">#000000</color>
+
+    <color name="colorPlayerOne">#3366ff</color>
+    <color name="colorPlayerTwo">#FF0000</color>
+
+
+    <color name="colorX">#3366ff</color>
+    <color name="colorO">#FF0000</color>q
 </resources>

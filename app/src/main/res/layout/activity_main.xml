@@ -14,6 +14,8 @@
         android:layout_marginTop="20dp"
         android:layout_marginLeft="40dp"
         android:text="@string/namePlayerOne"
+        android:textStyle="bold"
+        android:textColor="@color/colorPlayerOne"
         android:textSize="20sp" />
 
     <!-- Versus-->
@@ -23,10 +25,13 @@
         android:layout_height="wrap_content"
         android:layout_toRightOf="@+id/namePlayerOneTextView"
         android:layout_marginTop="20dp"
-        android:layout_marginLeft="40dp"
-        android:layout_marginRight="40dp"
+        android:gravity="top|center_vertical|center_horizontal"
         android:padding="5dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:text="@string/versus"
+        android:textStyle="bold"
+        android:textColor="@color/colorVersus"
         android:textSize="20sp" />
 
     <!-- Player 2 -->
@@ -37,7 +42,10 @@
         android:layout_toRightOf="@+id/versus"
         android:padding="5dp"
         android:layout_marginTop="20dp"
+        android:layout_marginRight="40dp"
         android:text="@string/namePlayerTwo"
+        android:textStyle="bold"
+        android:textColor="@color/colorPlayerTwo"
         android:textSize="20sp" />
 
     <!-- Tile 1-->
@@ -155,6 +163,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tileEightButton"
+        android:layout_marginTop="20dp"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
         android:padding="5dp"
@@ -168,7 +177,7 @@
         android:layout_width="324dp"
         android:layout_height="75dp"
         android:layout_below="@+id/gamemessagesLabel"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="20dp"
         android:layout_marginLeft="40dp"
         android:layout_marginRight="40dp"
         android:text="@string/new_game"
