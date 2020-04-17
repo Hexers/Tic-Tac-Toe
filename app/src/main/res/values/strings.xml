@@ -35,7 +35,8 @@
     <string name="player_two_name_title">Player Two</string>
     <string name="player_two_name_summary">Sets name for Player Two.</string>
 
-    <string name="player_turn">Which Player Starts?</string>
+    <string name="player_turn_name"> </string>
+    <string name="player_turn_title">Which Player Starts?</string>
     <string name="player_turn_summary">Summary Player Turn</string>
 
     <string name="new_game">New Game</string>
