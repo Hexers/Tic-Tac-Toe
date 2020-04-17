@@ -251,7 +251,27 @@ public class MainActivity extends Activity
                 break;
 
             case R.id.newGameButton:
+                // Reset tiles back to blank
+                tileOneButton.setText("");
+                tileTwoButton.setText("");
+                tileThreeButton.setText("");
+                tileFourButton.setText("");
+                tileFiveButton.setText("");
+                tileSixButton.setText("");
+                tileSevenButton.setText("");
+                tileEightButton.setText("");
+                tileNineButton.setText("");
 
+                // Reset color to #cccccc
+                tileOneButton.setBackgroundColor(Color.parseColor("#cccccc"));
+                tileTwoButton.setBackgroundColor(Color.parseColor("#cccccc"));
+                tileThreeButton.setBackgroundColor(Color.parseColor("#cccccc"));
+                tileFourButton.setBackgroundColor(Color.parseColor("#cccccc"));
+                tileFiveButton.setBackgroundColor(Color.parseColor("#cccccc"));
+                tileSixButton.setBackgroundColor(Color.parseColor("#cccccc"));
+                tileSevenButton.setBackgroundColor(Color.parseColor("#cccccc"));
+                tileEightButton.setBackgroundColor(Color.parseColor("#cccccc"));
+                tileNineButton.setBackgroundColor(Color.parseColor("#cccccc"));
                 break;
         }
     }
