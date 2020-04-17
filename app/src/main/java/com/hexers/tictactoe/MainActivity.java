@@ -218,6 +218,20 @@ public class MainActivity extends Activity
         String moveO = "O"; // Sets text on Button to O
 
 
+        /*
+
+        setPlayerTurn = 1
+        setPlayerTurn = 2
+
+        playerOneName = setPlayerTurn
+
+        New textView to select which player goes first
+
+        If playerTurn = 1
+
+         */
+
+
         for (int totalTurns = 1; totalTurns <= 9; totalTurns++) {
 
             switch (v.getId()) {

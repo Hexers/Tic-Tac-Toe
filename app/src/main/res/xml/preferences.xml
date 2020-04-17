@@ -23,6 +23,11 @@
         android:title="@string/player_two_name_title"
         android:summary="@string/player_two_name_summary"
         android:defaultValue="" />
+    <EditTextPreference
+        android:key="player_turn"
+        android:title="@string/player_turn"
+        android:summary="@string/player_turn_summary"
+        android:defaultValue="" />
 <!--
     <EditTextPreference
         android:key="pref_name"
