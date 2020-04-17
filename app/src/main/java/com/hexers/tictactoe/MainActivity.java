@@ -44,7 +44,8 @@ public class MainActivity extends Activity
     // define instance variables that should be saved
     private String billAmountString = "";
     private float tipPercent = .15f;
-    private int turn = 0;
+
+    int totalTurns = 0;
 
     // define rounding constants
     private final int ROUND_NONE = 0;
@@ -205,113 +206,162 @@ public class MainActivity extends Activity
 
     @Override
     public void onClick(View v) {
-        countTurns++;
 
+        //totalTurns++;
 
+        String playerOneName = namePlayerOneTextView.getText().toString();
+        String playerTwoName = namePlayerTwoTextView.getText().toString();
+
+        String currentTurn = playerOneName;
 
         String moveX = "X"; // Sets text on Button to X
         String moveO = "O"; // Sets text on Button to O
-        switch (v.getId()) {
-            case R.id.tileOneButton:
-                tileOneButton.setActivated(true);
-                tileOneButton.setText(moveX);
-                tileOneButton.setBackgroundColor(Color.parseColor("#7598ff"));
-                tileOneButton.setTextSize(50f);
-                break;
 
-            case R.id.tileTwoButton:
-                tileTwoButton.setActivated(true);
-                tileTwoButton.setText(moveO);
-                tileTwoButton.setBackgroundColor(Color.parseColor("#ff5c5c"));
-                tileTwoButton.setTextSize(50f);
-                break;
 
-            case R.id.tileThreeButton:
-                tileThreeButton.setActivated(true);
-                tileThreeButton.setText("X");
-                break;
+        for (int totalTurns = 1; totalTurns <= 9; totalTurns++) {
 
-            case R.id.tileFourButton:
-                tileFourButton.setActivated(true);
-                tileFourButton.setText("X");
-                break;
+            switch (v.getId()) {
+                case R.id.tileOneButton:
+                    if (totalTurns == 1)
+                    {
+                        gamemessagesLabel.setText("Player X's Turn");
+                        tileOneButton.setActivated(true);
+                        tileOneButton.setText(moveX);
+                        tileOneButton.setBackgroundColor(Color.parseColor("#7598ff"));
+                        tileOneButton.setTextSize(50f);
+                    }
+                    break;
 
-            case R.id.tileFiveButton:
-                tileFiveButton.setActivated(true);
-                tileFiveButton.setText("X");
-                break;
+                case R.id.tileTwoButton:
+                    if (totalTurns == 2)
+                    {
+                        gamemessagesLabel.setText("Player O's Turn");
+                        tileTwoButton.setActivated(true);
+                        tileTwoButton.setText(moveO);
+                        tileTwoButton.setBackgroundColor(Color.parseColor("#ff5c5c"));
+                        tileTwoButton.setTextSize(50f);
 
-            case R.id.tileSixButton:
-                tileSixButton.setActivated(true);
-                tileSixButton.setText("X");
-                break;
+                    }
+                    break;
 
-            case R.id.tileSevenButton:
-                tileSevenButton.setActivated(true);
-                tileSevenButton.setText("X");
-                break;
+                case R.id.tileThreeButton:
+                    if (totalTurns == 3)
+                    {
+                        gamemessagesLabel.setText("Player X's Turn");
+                        tileThreeButton.setActivated(true);
+                        tileThreeButton.setText(moveX);
+                        tileThreeButton.setBackgroundColor(Color.parseColor("#7598ff"));
+                        tileThreeButton.setTextSize(50f);
+                    }
+                    break;
 
-            case R.id.tileEightButton:
-                tileEightButton.setActivated(true);
-                tileEightButton.setText("X");
-                break;
+                case R.id.tileFourButton:
+                    if (totalTurns == 4)
+                    {
+                        gamemessagesLabel.setText("Player O's Turn");
+                        tileFourButton.setActivated(true);
+                        tileFourButton.setText(moveO);
+                        tileFourButton.setBackgroundColor(Color.parseColor("#ff5c5c"));
+                        tileFourButton.setTextSize(50f);
+                    }
+                    break;
 
-            case R.id.tileNineButton:
-                tileNineButton.setActivated(true);
-                tileNineButton.setText("X");
-                break;
+                case R.id.tileFiveButton:
+                    if (totalTurns == 5)
+                    {
+                        gamemessagesLabel.setText("Player X's Turn");
+                        tileFiveButton.setActivated(true);
+                        tileFiveButton.setText(moveX);
+                        tileFiveButton.setBackgroundColor(Color.parseColor("#7598ff"));
+                        tileFiveButton.setTextSize(50f);
+                    }
+                    break;
 
-            case R.id.newGameButton:
-                // Reset tiles back to blank
-                tileOneButton.setText("");
-                tileTwoButton.setText("");
-                tileThreeButton.setText("");
-                tileFourButton.setText("");
-                tileFiveButton.setText("");
-                tileSixButton.setText("");
-                tileSevenButton.setText("");
-                tileEightButton.setText("");
-                tileNineButton.setText("");
+                case R.id.tileSixButton:
+                    if (totalTurns == 6)
+                    {
+                        gamemessagesLabel.setText("Player O's Turn");
+                        tileSixButton.setActivated(true);
+                        tileSixButton.setText(moveO);
+                        tileSixButton.setBackgroundColor(Color.parseColor("#ff5c5c"));
+                        tileSixButton.setTextSize(50f);
+                    }
 
-                gamemessagesLabel.setText("");
-                newGameButton.setText("New Game");
+                    break;
 
-                // Reset color to #cccccc
-                tileOneButton.setBackgroundColor(Color.parseColor("#cccccc"));
-                tileTwoButton.setBackgroundColor(Color.parseColor("#cccccc"));
-                tileThreeButton.setBackgroundColor(Color.parseColor("#cccccc"));
-                tileFourButton.setBackgroundColor(Color.parseColor("#cccccc"));
-                tileFiveButton.setBackgroundColor(Color.parseColor("#cccccc"));
-                tileSixButton.setBackgroundColor(Color.parseColor("#cccccc"));
-                tileSevenButton.setBackgroundColor(Color.parseColor("#cccccc"));
-                tileEightButton.setBackgroundColor(Color.parseColor("#cccccc"));
-                tileNineButton.setBackgroundColor(Color.parseColor("#cccccc"));
+                case R.id.tileSevenButton:
+                    if (totalTurns == 7)
+                    {
+                        gamemessagesLabel.setText("Player X's Turn");
+                        tileSevenButton.setActivated(true);
+                        tileSevenButton.setText("X");
+                        tileSevenButton.setBackgroundColor(Color.parseColor("#7598ff"));
+                        tileSevenButton.setTextSize(50f);
+                    }
+                    break;
 
-                tileOneButton.setActivated(false);
-                tileTwoButton.setActivated(false);
-                tileThreeButton.setActivated(false);
-                tileFourButton.setActivated(false);
-                tileFiveButton.setActivated(false);
-                tileSixButton.setActivated(false);
-                tileSevenButton.setActivated(false);
-                tileEightButton.setActivated(false);
-                tileNineButton.setActivated(false);
+                case R.id.tileEightButton:
+                    if (totalTurns == 8)
+                    {
+                        gamemessagesLabel.setText("Player O's Turn");
+                        tileEightButton.setActivated(true);
+                        tileEightButton.setText(moveO);
+                        tileEightButton.setBackgroundColor(Color.parseColor("#ff5c5c"));
+                        tileEightButton.setTextSize(50f);
+                    }
 
-                break;
-        }
+                    break;
 
-        if (countTurns % 2 == 0 )
-        {
-            letter = "X";
-        }
-        else
-        {
-            letter = "O";
-        }
+                case R.id.tileNineButton:
+                    if (totalTurns == 9)
+                    {
+                        gamemessagesLabel.setText("Player X's Turn");
+                        tileNineButton.setActivated(true);
+                        tileNineButton.setText(moveX);
+                        tileNineButton.setBackgroundColor(Color.parseColor("#7598ff"));
+                        tileNineButton.setTextSize(50f);
+                    }
+                    break;
 
-        for ( int i = 0; i <= 7; i++)
-        {
+                case R.id.newGameButton:
+                    // Reset tiles back to blank
+                    tileOneButton.setText("");
+                    tileTwoButton.setText("");
+                    tileThreeButton.setText("");
+                    tileFourButton.setText("");
+                    tileFiveButton.setText("");
+                    tileSixButton.setText("");
+                    tileSevenButton.setText("");
+                    tileEightButton.setText("");
+                    tileNineButton.setText("");
 
+                    gamemessagesLabel.setText("");
+                    newGameButton.setText("New Game");
+
+                    // Reset color to #cccccc
+                    tileOneButton.setBackgroundColor(Color.parseColor("#cccccc"));
+                    tileTwoButton.setBackgroundColor(Color.parseColor("#cccccc"));
+                    tileThreeButton.setBackgroundColor(Color.parseColor("#cccccc"));
+                    tileFourButton.setBackgroundColor(Color.parseColor("#cccccc"));
+                    tileFiveButton.setBackgroundColor(Color.parseColor("#cccccc"));
+                    tileSixButton.setBackgroundColor(Color.parseColor("#cccccc"));
+                    tileSevenButton.setBackgroundColor(Color.parseColor("#cccccc"));
+                    tileEightButton.setBackgroundColor(Color.parseColor("#cccccc"));
+                    tileNineButton.setBackgroundColor(Color.parseColor("#cccccc"));
+
+                    tileOneButton.setActivated(false);
+                    tileTwoButton.setActivated(false);
+                    tileThreeButton.setActivated(false);
+                    tileFourButton.setActivated(false);
+                    tileFiveButton.setActivated(false);
+                    tileSixButton.setActivated(false);
+                    tileSevenButton.setActivated(false);
+                    tileEightButton.setActivated(false);
+                    tileNineButton.setActivated(false);
+
+                    break;
+
+            }
         }
 
         // Horizontal Winning Buttons
@@ -320,43 +370,47 @@ public class MainActivity extends Activity
             gamemessagesLabel.setText("Winner!");
         }
 
-        if (tileFourButton.isActivated() && tileFiveButton.isActivated() && tileSixButton.isActivated())
+        else if (tileFourButton.isActivated() && tileFiveButton.isActivated() && tileSixButton.isActivated())
         {
             gamemessagesLabel.setText("Winner!");
         }
 
-        if (tileSevenButton.isActivated() && tileEightButton.isActivated() && tileNineButton.isActivated())
+        else if (tileSevenButton.isActivated() && tileEightButton.isActivated() && tileNineButton.isActivated())
         {
             gamemessagesLabel.setText("Winner!");
         }
 
         // Vertical Winning Buttons
-        if (tileOneButton.isActivated() && tileFourButton.isActivated() && tileSevenButton.isActivated())
+        else if (tileOneButton.isActivated() && tileFourButton.isActivated() && tileSevenButton.isActivated())
         {
             gamemessagesLabel.setText("Winner!");
         }
 
-        if (tileTwoButton.isActivated() && tileFiveButton.isActivated() && tileEightButton.isActivated())
+        else if (tileTwoButton.isActivated() && tileFiveButton.isActivated() && tileEightButton.isActivated())
         {
             gamemessagesLabel.setText("Winner!");
         }
 
-        if (tileThreeButton.isActivated() && tileSixButton.isActivated() && tileNineButton.isActivated())
+        else if (tileThreeButton.isActivated() && tileSixButton.isActivated() && tileNineButton.isActivated())
         {
             gamemessagesLabel.setText("Winner!");
         }
 
         // Diagonal Winning Buttons
-        if (tileOneButton.isActivated() && tileFiveButton.isActivated() && tileNineButton.isActivated())
+        else if (tileOneButton.isActivated() && tileFiveButton.isActivated() && tileNineButton.isActivated())
         {
             gamemessagesLabel.setText("Winner!");
         }
 
-        if (tileThreeButton.isActivated() && tileFiveButton.isActivated() && tileSevenButton.isActivated())
+        else if (tileThreeButton.isActivated() && tileFiveButton.isActivated() && tileSevenButton.isActivated())
         {
             gamemessagesLabel.setText("Winner!");
         }
 
+        if (totalTurns == 9)
+        {
+            gamemessagesLabel.setText("Game is a draw");
+        }
     }
 
 
