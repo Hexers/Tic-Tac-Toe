@@ -26,18 +26,10 @@ public class MainActivity extends Activity
         implements OnEditorActionListener, OnClickListener {
 
     // define variables for the widgets
-    /*
-    private EditText billAmountEditText;
-    private TextView percentTextView;
-    private Button   percentUpButton;
-    private Button   percentDownButton;
-    private TextView tipTextView;
-    private TextView totalTextView;
-    private TextView nameTextView;
-    */
 
     private TextView namePlayerOneTextView;
     private TextView namePlayerTwoTextView;
+    private TextView gamemessagesLabel;
     private Button tileOneButton;
     private Button tileTwoButton;
     private Button tileThreeButton;
@@ -52,6 +44,7 @@ public class MainActivity extends Activity
     // define instance variables that should be saved
     private String billAmountString = "";
     private float tipPercent = .15f;
+    private int turn = 0;
 
     // define rounding constants
     private final int ROUND_NONE = 0;
@@ -72,6 +65,7 @@ public class MainActivity extends Activity
 
         namePlayerOneTextView = (TextView) findViewById(R.id.namePlayerOneTextView);
         namePlayerTwoTextView = (TextView) findViewById(R.id.namePlayerTwoTextView);
+        gamemessagesLabel = (TextView) findViewById(R.id.gamemessagesLabel);
         tileOneButton = (Button) findViewById(R.id.tileOneButton);
         tileTwoButton = (Button) findViewById(R.id.tileTwoButton);
         tileThreeButton = (Button) findViewById(R.id.tileThreeButton);
@@ -151,6 +145,8 @@ public class MainActivity extends Activity
         calculateAndDisplay();
     }
 
+
+
     public void calculateAndDisplay() {
         // get the bill amount
         // billAmountString = billAmountEditText.getText().toString();
@@ -209,44 +205,59 @@ public class MainActivity extends Activity
 
     @Override
     public void onClick(View v) {
+        countTurns++;
+
+
+
+        String moveX = "X"; // Sets text on Button to X
+        String moveO = "O"; // Sets text on Button to O
         switch (v.getId()) {
             case R.id.tileOneButton:
-                tileOneButton.setText("X");
+                tileOneButton.setActivated(true);
+                tileOneButton.setText(moveX);
                 tileOneButton.setBackgroundColor(Color.parseColor("#7598ff"));
                 tileOneButton.setTextSize(50f);
                 break;
 
             case R.id.tileTwoButton:
-                tileTwoButton.setText("O");
+                tileTwoButton.setActivated(true);
+                tileTwoButton.setText(moveO);
                 tileTwoButton.setBackgroundColor(Color.parseColor("#ff5c5c"));
                 tileTwoButton.setTextSize(50f);
                 break;
 
             case R.id.tileThreeButton:
+                tileThreeButton.setActivated(true);
                 tileThreeButton.setText("X");
                 break;
 
             case R.id.tileFourButton:
+                tileFourButton.setActivated(true);
                 tileFourButton.setText("X");
                 break;
 
             case R.id.tileFiveButton:
+                tileFiveButton.setActivated(true);
                 tileFiveButton.setText("X");
                 break;
 
             case R.id.tileSixButton:
+                tileSixButton.setActivated(true);
                 tileSixButton.setText("X");
                 break;
 
             case R.id.tileSevenButton:
+                tileSevenButton.setActivated(true);
                 tileSevenButton.setText("X");
                 break;
 
             case R.id.tileEightButton:
+                tileEightButton.setActivated(true);
                 tileEightButton.setText("X");
                 break;
 
             case R.id.tileNineButton:
+                tileNineButton.setActivated(true);
                 tileNineButton.setText("X");
                 break;
 
@@ -262,6 +273,9 @@ public class MainActivity extends Activity
                 tileEightButton.setText("");
                 tileNineButton.setText("");
 
+                gamemessagesLabel.setText("");
+                newGameButton.setText("New Game");
+
                 // Reset color to #cccccc
                 tileOneButton.setBackgroundColor(Color.parseColor("#cccccc"));
                 tileTwoButton.setBackgroundColor(Color.parseColor("#cccccc"));
@@ -272,8 +286,77 @@ public class MainActivity extends Activity
                 tileSevenButton.setBackgroundColor(Color.parseColor("#cccccc"));
                 tileEightButton.setBackgroundColor(Color.parseColor("#cccccc"));
                 tileNineButton.setBackgroundColor(Color.parseColor("#cccccc"));
+
+                tileOneButton.setActivated(false);
+                tileTwoButton.setActivated(false);
+                tileThreeButton.setActivated(false);
+                tileFourButton.setActivated(false);
+                tileFiveButton.setActivated(false);
+                tileSixButton.setActivated(false);
+                tileSevenButton.setActivated(false);
+                tileEightButton.setActivated(false);
+                tileNineButton.setActivated(false);
+
                 break;
         }
+
+        if (countTurns % 2 == 0 )
+        {
+            letter = "X";
+        }
+        else
+        {
+            letter = "O";
+        }
+
+        for ( int i = 0; i <= 7; i++)
+        {
+
+        }
+
+        // Horizontal Winning Buttons
+        if (tileOneButton.isActivated() && tileTwoButton.isActivated() && tileThreeButton.isActivated())
+        {
+            gamemessagesLabel.setText("Winner!");
+        }
+
+        if (tileFourButton.isActivated() && tileFiveButton.isActivated() && tileSixButton.isActivated())
+        {
+            gamemessagesLabel.setText("Winner!");
+        }
+
+        if (tileSevenButton.isActivated() && tileEightButton.isActivated() && tileNineButton.isActivated())
+        {
+            gamemessagesLabel.setText("Winner!");
+        }
+
+        // Vertical Winning Buttons
+        if (tileOneButton.isActivated() && tileFourButton.isActivated() && tileSevenButton.isActivated())
+        {
+            gamemessagesLabel.setText("Winner!");
+        }
+
+        if (tileTwoButton.isActivated() && tileFiveButton.isActivated() && tileEightButton.isActivated())
+        {
+            gamemessagesLabel.setText("Winner!");
+        }
+
+        if (tileThreeButton.isActivated() && tileSixButton.isActivated() && tileNineButton.isActivated())
+        {
+            gamemessagesLabel.setText("Winner!");
+        }
+
+        // Diagonal Winning Buttons
+        if (tileOneButton.isActivated() && tileFiveButton.isActivated() && tileNineButton.isActivated())
+        {
+            gamemessagesLabel.setText("Winner!");
+        }
+
+        if (tileThreeButton.isActivated() && tileFiveButton.isActivated() && tileSevenButton.isActivated())
+        {
+            gamemessagesLabel.setText("Winner!");
+        }
+
     }
 
 
