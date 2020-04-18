@@ -39,6 +39,10 @@
     <string name="player_turn_title">Which Player Starts?</string>
     <string name="player_turn_summary">Summary Player Turn</string>
 
+    <string name="turn_variable"></string>
+    <string name="turn_variable_title"></string>
+    <string name="turn_variable_summary"></string>
+
     <string name="new_game">New Game</string>
 
     <string name="tile_one_name"> </string>

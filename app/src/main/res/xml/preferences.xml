@@ -28,11 +28,12 @@
         android:title="@string/player_turn_title"
         android:summary="@string/player_turn_summary"
         android:defaultValue="" />
-<!--
+
     <EditTextPreference
-        android:key="pref_name"
-        android:title="@string/name_title"
-        android:summary="@string/name_summary"
+        android:key="turn_variable"
+        android:title="@string/turn_variable_title"
+        android:summary="@string/turn_variable_summary"
         android:defaultValue="" />
--->
+
+
 </PreferenceScreen>

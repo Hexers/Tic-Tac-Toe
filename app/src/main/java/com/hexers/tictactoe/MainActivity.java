@@ -30,6 +30,7 @@ public class MainActivity extends Activity
     private TextView namePlayerOneTextView;
     private TextView namePlayerTwoTextView;
     private TextView playerTurnTextView;
+    private TextView turnVariableTextView;
     private TextView gamemessagesLabel;
     private Button tileOneButton;
     private Button tileTwoButton;
@@ -69,6 +70,7 @@ public class MainActivity extends Activity
         namePlayerTwoTextView = (TextView) findViewById(R.id.namePlayerTwoTextView);
         playerTurnTextView = (TextView) findViewById(R.id.playerTurnTextView);
         gamemessagesLabel = (TextView) findViewById(R.id.gamemessagesLabel);
+        turnVariableTextView = (TextView) findViewById(R.id.turnVariableTextView);
         tileOneButton = (Button) findViewById(R.id.tileOneButton);
         tileTwoButton = (Button) findViewById(R.id.tileTwoButton);
         tileThreeButton = (Button) findViewById(R.id.tileThreeButton);
@@ -136,6 +138,11 @@ public class MainActivity extends Activity
         // get name turn
         String playerTurn = prefs.getString("player_turn_name", "");
         playerTurnTextView.setText(playerTurn);
+
+        // turnVariable
+
+        String turnVariable = prefs.getString("turn_variable", "");
+        turnVariableTextView.setText(turnVariable);
 
         // get the instance variables
         billAmountString = prefs.getString("billAmountString", "");
@@ -219,26 +226,32 @@ public class MainActivity extends Activity
         String playerTwoName = namePlayerTwoTextView.getText().toString();
         String playerTurn = playerTurnTextView.getText().toString();
 
+        //String turnVariable = " ";
+
+        //String turnVariable = prefs.getString("turn_variable", "");
+        //turnVariableTextView.setText(turnVariable);
+
+        // Stopped here
+        //String turnVariable = turnVariableTextView.setText();
+
         String moveX = "X"; // Sets text on Button to X
         String moveO = "O"; // Sets text on Button to O
 
 
-        for (int totalTurns = 0; totalTurns <= 9; totalTurns++) {
+        for (int totalTurns = 0; totalTurns <= 9; totalTurns++)
+        {
 
-            if (playerTurn == "1" || playerTurn == playerOneName)
-            {
+            if (playerTurn == "1" || playerTurn == playerOneName) {
+                // do modulus thingy from java tictactoe to get odd numbers to be next or even numbers w/ remainder
+                // remove textview foe turn and hardcode playerTurn = 1 and add a loop to select who goes first and increment turn based on that
                 playerTurnTextView.setText(playerOneName);
-            }
-            else if (playerTurn == "2" || playerTurn == playerTwoName)
-            {
+            } else if (playerTurn == "2" || playerTurn == playerTwoName) {
                 playerTurnTextView.setText(playerTwoName);
-            }
-            else
-            {
+            } else {
                 gamemessagesLabel.setText("Error setting turn!");
                 gamemessagesLabel.setTextColor(Color.parseColor("#FF0000"));
             }
-
+        }
             switch (v.getId()) {
                 case R.id.tileOneButton:
                     if (totalTurns == 1 && playerTurn == playerOneName)
@@ -261,7 +274,7 @@ public class MainActivity extends Activity
                     }
                     else
                     {
-                        newGameButton.setText(playerTurn);
+                        //newGameButton.setText(turnVariable);
                         gamemessagesLabel.setText("Error on tile 1");
                         gamemessagesLabel.setTextColor(Color.parseColor("#FF0000"));
                     }
@@ -515,7 +528,7 @@ public class MainActivity extends Activity
                     break;
 
             }
-        }
+
 
         // Horizontal Winning Buttons
         if (tileOneButton.isActivated() && tileTwoButton.isActivated() && tileThreeButton.isActivated())
