@@ -196,17 +196,7 @@
         android:padding="5dp"
         android:text="@string/player_turn_name"
         android:textSize="20sp"
-        android:textStyle="bold" />
-
-    <!-- Turn Variable-->
-    <TextView
-        android:id="@+id/turnVariableTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/turn_variable"
+        android:textStyle="bold"
         android:visibility="invisible"
-        android:clickable="false"
-        />
-
-
+        android:clickable="false" />
 </RelativeLayout>

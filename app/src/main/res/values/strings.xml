@@ -35,13 +35,11 @@
     <string name="player_two_name_title">Player Two</string>
     <string name="player_two_name_summary">Sets name for Player Two.</string>
 
+    <!-- Not completed yet -->
     <string name="player_turn_name"> </string>
-    <string name="player_turn_title">Which Player Starts?</string>
-    <string name="player_turn_summary">Summary Player Turn</string>
-
-    <string name="turn_variable"></string>
-    <string name="turn_variable_title"></string>
-    <string name="turn_variable_summary"></string>
+    <string name="player_turn_title">Player Turn</string>
+    <string name="player_turn_summary">Player Turn Summary</string>
+    <!-- Not completed yet -->
 
     <string name="new_game">New Game</string>
 
@@ -54,9 +52,6 @@
     <string name="tile_seven_name"> </string>
     <string name="tile_eight_name"> </string>
     <string name="tile_nine_name"> </string>
-
-    <string name="name_label"></string>
-    <string name="name"></string>
 
     <string name="namePlayerOne">John Doe 2</string>
     <string name="namePlayerTwo">John Doe 3</string>
