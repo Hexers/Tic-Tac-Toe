@@ -585,7 +585,9 @@ reset.setOnClickListener(new View.OnClickListener() {
                     break;
 
                      */
+
                 case R.id.newGameButton:
+                    // Reloads MainActivity class
                     startActivity(new Intent(MainActivity.this, MainActivity.class));
             }
             /*
