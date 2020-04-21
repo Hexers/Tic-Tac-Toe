@@ -159,7 +159,7 @@
     <!-- Game Messages -->
 
     <TextView
-        android:id="@+id/gamemessagesLabel"
+        android:id="@+id/gameMessagesLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tileEightButton"
@@ -176,7 +176,7 @@
         android:id="@+id/newGameButton"
         android:layout_width="324dp"
         android:layout_height="75dp"
-        android:layout_below="@+id/gamemessagesLabel"
+        android:layout_below="@+id/gameMessagesLabel"
         android:layout_marginTop="20dp"
         android:layout_marginLeft="40dp"
         android:layout_marginRight="40dp"
