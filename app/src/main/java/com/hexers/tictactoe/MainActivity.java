@@ -27,7 +27,6 @@ public class MainActivity extends Activity
         implements OnEditorActionListener, OnClickListener {
 
     // define variables for the widgets
-
     private TextView namePlayerOneTextView;
     private TextView namePlayerTwoTextView;
     private TextView gameMessagesLabel;
@@ -53,19 +52,13 @@ public class MainActivity extends Activity
     private String tileEightText = "";
     private String tileNineText = "";
 
-    // define instance variables that should be saved
-    private String billAmountString = "";
-    private float tipPercent = .15f;
-
-    // define rounding constants
-    private final int ROUND_NONE = 0;
-    private final int ROUND_TIP = 1;
-    private final int ROUND_TOTAL = 2;
+    int playerOneMoveCount;
+    int playerTwoMoveCount;
+    int totalMoves;
+    int totalTurns;
 
     // set up preferences
     private SharedPreferences prefs;
-    private boolean rememberTipPercent = true;
-    private int rounding = ROUND_NONE;
 
     String currentMove;
 
@@ -75,7 +68,6 @@ public class MainActivity extends Activity
         setContentView(R.layout.activity_main);
 
         // get references to the widgets
-
         namePlayerOneTextView = (TextView) findViewById(R.id.namePlayerOneTextView);
         namePlayerTwoTextView = (TextView) findViewById(R.id.namePlayerTwoTextView);
         gameMessagesLabel = (TextView) findViewById(R.id.gameMessagesLabel);
@@ -119,8 +111,8 @@ public class MainActivity extends Activity
     public void onPause() {
         // save the instance variables
         Editor editor = prefs.edit();
-        editor.putString("billAmountString", billAmountString);
-        editor.putFloat("tipPercent", tipPercent);
+        //editor.putString("billAmountString", billAmountString);
+        //editor.putFloat("tipPercent", tipPercent);
         editor.commit();
 
         super.onPause();
@@ -130,10 +122,6 @@ public class MainActivity extends Activity
     public void onResume() {
         super.onResume();
 
-        // get preferences
-        rememberTipPercent = prefs.getBoolean("pref_remember_percent", true);
-        rounding = Integer.parseInt(prefs.getString("pref_rounding", "0"));
-
         // get name for player one
         String playerOneName = prefs.getString("player_one_name", "");
         namePlayerOneTextView.setText(playerOneName);
@@ -142,60 +130,6 @@ public class MainActivity extends Activity
         String playerTwoName = prefs.getString("player_two_name", "");
         namePlayerTwoTextView.setText(playerTwoName);
 
-        // get the instance variables
-        billAmountString = prefs.getString("billAmountString", "");
-        if (rememberTipPercent) {
-            tipPercent = prefs.getFloat("tipPercent", 0.15f);
-        } else {
-            tipPercent = 0.15f;
-        }
-
-        // set the bill amount on its widget
-        // billAmountEditText.setText(billAmountString);
-
-        // calculate and display
-        calculateAndDisplay();
-    }
-
-    public void calculateAndDisplay() {
-        // get the bill amount
-        // billAmountString = billAmountEditText.getText().toString();
-        float billAmount;
-        if (billAmountString.equals("")) {
-            billAmount = 0;
-        }
-        else {
-            billAmount = Float.parseFloat(billAmountString);
-        }
-
-        // calculate tip and total
-        float tipAmount = 0;
-        float totalAmount = 0;
-        float tipPercentToDisplay = 0;
-        if (rounding == ROUND_NONE) {
-            tipAmount = billAmount * tipPercent;
-            totalAmount = billAmount + tipAmount;
-            tipPercentToDisplay = tipPercent;
-        }
-        else if (rounding == ROUND_TIP) {
-            tipAmount = StrictMath.round(billAmount * tipPercent);
-            totalAmount = billAmount + tipAmount;
-            tipPercentToDisplay = tipAmount / billAmount;
-        }
-        else if (rounding == ROUND_TOTAL) {
-            float tipNotRounded = billAmount * tipPercent;
-            totalAmount = StrictMath.round(billAmount + tipNotRounded);
-            tipAmount = totalAmount - billAmount;
-            tipPercentToDisplay = tipAmount / billAmount;
-        }
-
-        // display the other results with formatting
-        NumberFormat currency = NumberFormat.getCurrencyInstance();
-        //tipTextView.setText(currency.format(tipAmount));
-        //totalTextView.setText(currency.format(totalAmount));
-
-        NumberFormat percent = NumberFormat.getPercentInstance();
-        //percentTextView.setText(percent.format(tipPercentToDisplay));
     }
 
     public void disableButtons()
@@ -236,18 +170,6 @@ public class MainActivity extends Activity
 
     public void chooseWinners()
     {
-        /*
-         currentMove == "X" &&
-         ** Add currentMove to a loop to decide X-Winner or O-Winner **
-        */
-
-        // get button texts
-
-        // Horizontal Winning Buttons
-        //if (tileOneButton.isActivated() && tileTwoButton.isActivated() && tileThreeButton.isActivated())
-        //tileOneButton.getText();
-        //tileTwoButton.getText();
-        //tileThreeButton.getText();
 
         tileOneText = tileOneButton.getText().toString();
         tileTwoText = tileTwoButton.getText().toString();
@@ -261,13 +183,6 @@ public class MainActivity extends Activity
 
         String playerOneName = prefs.getString("player_one_name", "");
         String playerTwoName = prefs.getString("player_two_name", "");
-
-        /*
-            <color name="colorPlayerOne">#3366ff</color>
-            <color name="colorPlayerTwo">#FF0000</color>
-         */
-        //namePlayerOneTextView.setTextColor(Color.parseColor("#3366ff"));
-        //namePlayerTwoTextView.setTextColor(Color.parseColor("#FF0000"));
 
         // Horizontal Winning Buttons
         if (tileOneButton.isActivated() && tileTwoButton.isActivated() && tileThreeButton.isActivated())
@@ -385,6 +300,19 @@ public class MainActivity extends Activity
             }
         }
 
+        // tie
+        if (tileOneButton.isActivated() && tileTwoButton.isActivated() && tileThreeButton.isActivated()
+            && tileFourButton.isActivated() && tileFiveButton.isActivated() && tileSixButton.isActivated()
+            && tileSevenButton.isActivated() && tileEightButton.isActivated() && tileNineButton.isActivated())
+        {
+            totalMoves = playerOneMoveCount + playerTwoMoveCount;
+            if (totalMoves >= 9)
+            {
+                gameMessagesLabel.setText("Game is a draw!");
+                disableButtons();
+            }
+        }
+
     }
 
     @Override
@@ -397,7 +325,6 @@ public class MainActivity extends Activity
                 actionId == EditorInfo.IME_ACTION_UNSPECIFIED ||
                 keyCode == KeyEvent.KEYCODE_DPAD_CENTER ||
                 keyCode == KeyEvent.KEYCODE_ENTER) {
-            calculateAndDisplay();
         }
         return false;
     }
@@ -405,21 +332,23 @@ public class MainActivity extends Activity
     @Override
     public void onClick(View v) {
 
-        int totalTurns = 0;
-
+        totalTurns = 0;
             switch (v.getId()) {
+
                 case R.id.tileOneButton:
                     if (totalTurns % 2 == 1) {
-                        totalTurns = totalTurns + 1;
+                        playerOneMoveCount++;
                         tileOneButton.setActivated(true);
                         tileOneButton.setText(currentMove);
                         if (currentMove == "X")
                         {
                             tileOneButton.setBackgroundColor(Color.parseColor("#7598ff"));
+                            tileOneButton.setClickable(false);
                         }
                         else if (currentMove == "O")
                         {
                             tileOneButton.setBackgroundColor(Color.parseColor("#ff5c5c"));
+                            tileOneButton.setClickable(false);
                         }
                         tileOneButton.setTextSize(50f);
                         playerTurnMessage();
@@ -428,16 +357,19 @@ public class MainActivity extends Activity
                     }
                     else if (totalTurns % 2 == 0)
                     {
-                        totalTurns = totalTurns + 1;
+                        totalTurns++;
+                        playerTwoMoveCount++;
                         tileOneButton.setActivated(true);
                         tileOneButton.setText(currentMove);
                         if (currentMove == "X")
                         {
                             tileOneButton.setBackgroundColor(Color.parseColor("#7598ff"));
+                            tileOneButton.setClickable(false);
                         }
                         else if (currentMove == "O")
                         {
                             tileOneButton.setBackgroundColor(Color.parseColor("#ff5c5c"));
+                            tileOneButton.setClickable(false);
                         }
                         tileOneButton.setTextSize(50f);
                         playerTurnMessage();
@@ -448,34 +380,39 @@ public class MainActivity extends Activity
                 case R.id.tileTwoButton:
                     if (totalTurns % 2 == 1)
                     {
-                        totalTurns = totalTurns + 1;
+                        totalTurns++;
+                        playerOneMoveCount++;
                         tileTwoButton.setActivated(true);
                         tileTwoButton.setText(currentMove);
                         if (currentMove == "X")
                         {
                             tileTwoButton.setBackgroundColor(Color.parseColor("#7598ff"));
-                            //System.out.println(tileOneText);
+                            tileTwoButton.setClickable(false);
                         }
                         else if (currentMove == "O")
                         {
                             tileTwoButton.setBackgroundColor(Color.parseColor("#ff5c5c"));
-                            //System.out.println(tileOneText);
+                            tileTwoButton.setClickable(false);
                         }
                         tileTwoButton.setTextSize(50f);
                         playerTurnMessage();
                         playerSwitch();
                     }
                     else if (totalTurns % 2 == 0)
-                    { totalTurns = totalTurns + 1;
+                    {
+                        totalTurns++;
+                        playerTwoMoveCount++;
                         tileTwoButton.setActivated(true);
                         tileTwoButton.setText(currentMove);
                         if (currentMove == "X")
                         {
                             tileTwoButton.setBackgroundColor(Color.parseColor("#7598ff"));
+                            tileTwoButton.setClickable(false);
                         }
                         else if (currentMove == "O")
                         {
                             tileTwoButton.setBackgroundColor(Color.parseColor("#ff5c5c"));
+                            tileTwoButton.setClickable(false);
                         }
                         tileTwoButton.setTextSize(50f);
                         playerTurnMessage();
@@ -487,16 +424,19 @@ public class MainActivity extends Activity
                 case R.id.tileThreeButton:
                     if (totalTurns % 2 == 1)
                     {
-                        totalTurns = totalTurns + 1;
+                        totalTurns++;
+                        playerOneMoveCount++;
                         tileThreeButton.setActivated(true);
                         tileThreeButton.setText(currentMove);
                         if (currentMove == "X")
                         {
                             tileThreeButton.setBackgroundColor(Color.parseColor("#7598ff"));
+                            tileThreeButton.setClickable(false);
                         }
                         else if (currentMove == "O")
                         {
                             tileThreeButton.setBackgroundColor(Color.parseColor("#ff5c5c"));
+                            tileThreeButton.setClickable(false);
                         }
                         tileThreeButton.setTextSize(50f);
                         playerTurnMessage();
@@ -504,16 +444,19 @@ public class MainActivity extends Activity
                     }
                     else if (totalTurns % 2 == 0)
                     {
-                        totalTurns = totalTurns + 1;
+                        totalTurns++;
+                        playerTwoMoveCount++;
                         tileThreeButton.setActivated(true);
                         tileThreeButton.setText(currentMove);
                         if (currentMove == "X")
                         {
                             tileThreeButton.setBackgroundColor(Color.parseColor("#7598ff"));
+                            tileThreeButton.setClickable(false);
                         }
                         else if (currentMove == "O")
                         {
                             tileThreeButton.setBackgroundColor(Color.parseColor("#ff5c5c"));
+                            tileThreeButton.setClickable(false);
                         }
                         tileThreeButton.setTextSize(50f);
                         playerTurnMessage();
@@ -524,15 +467,19 @@ public class MainActivity extends Activity
                 case R.id.tileFourButton:
                     if (totalTurns % 2 == 1)
                     {
+                        totalTurns++;
+                        playerOneMoveCount++;
                         tileFourButton.setActivated(true);
                         tileFourButton.setText(currentMove);
                         if (currentMove == "X")
                         {
                             tileFourButton.setBackgroundColor(Color.parseColor("#7598ff"));
+                            tileFourButton.setClickable(false);
                         }
                         else if (currentMove == "O")
                         {
                             tileFourButton.setBackgroundColor(Color.parseColor("#ff5c5c"));
+                            tileFourButton.setClickable(false);
                         }
                         tileFourButton.setTextSize(50f);
                         playerTurnMessage();
@@ -540,15 +487,19 @@ public class MainActivity extends Activity
                     }
                     else if (totalTurns % 2 == 0)
                     {
+                        totalTurns++;
+                        playerOneMoveCount++;
                         tileFourButton.setActivated(true);
                         tileFourButton.setText(currentMove);
                         if (currentMove == "X")
                         {
                             tileFourButton.setBackgroundColor(Color.parseColor("#7598ff"));
+                            tileFourButton.setClickable(false);
                         }
                         else if (currentMove == "O")
                         {
                             tileFourButton.setBackgroundColor(Color.parseColor("#ff5c5c"));
+                            tileFourButton.setClickable(false);
                         }
                         tileFourButton.setTextSize(50f);
                         playerTurnMessage();
@@ -559,15 +510,19 @@ public class MainActivity extends Activity
                 case R.id.tileFiveButton:
                     if (totalTurns % 2 == 1)
                     {
+                        totalTurns++;
+                        playerOneMoveCount++;
                         tileFiveButton.setActivated(true);
                         tileFiveButton.setText(currentMove);
                         if (currentMove == "X")
                         {
                             tileFiveButton.setBackgroundColor(Color.parseColor("#7598ff"));
+                            tileFiveButton.setClickable(false);
                         }
                         else if (currentMove == "O")
                         {
                             tileFiveButton.setBackgroundColor(Color.parseColor("#ff5c5c"));
+                            tileFiveButton.setClickable(false);
                         }
                         tileFiveButton.setTextSize(50f);
                         playerTurnMessage();
@@ -575,15 +530,19 @@ public class MainActivity extends Activity
                     }
                     else if (totalTurns % 2 == 0)
                     {
+                        totalTurns++;
+                        playerTwoMoveCount++;
                         tileFiveButton.setActivated(true);
                         tileFiveButton.setText(currentMove);
                         if (currentMove == "X")
                         {
                             tileFiveButton.setBackgroundColor(Color.parseColor("#7598ff"));
+                            tileFiveButton.setClickable(false);
                         }
                         else if (currentMove == "O")
                         {
                             tileFiveButton.setBackgroundColor(Color.parseColor("#ff5c5c"));
+                            tileFiveButton.setClickable(false);
                         }
                         tileFiveButton.setTextSize(50f);
                         playerTurnMessage();
@@ -594,15 +553,19 @@ public class MainActivity extends Activity
                 case R.id.tileSixButton:
                     if (totalTurns % 2 == 1)
                     {
+                        totalTurns++;
+                        playerOneMoveCount++;
                         tileSixButton.setActivated(true);
                         tileSixButton.setText(currentMove);
                         if (currentMove == "X")
                         {
                             tileSixButton.setBackgroundColor(Color.parseColor("#7598ff"));
+                            tileSixButton.setClickable(false);
                         }
                         else if (currentMove == "O")
                         {
                             tileSixButton.setBackgroundColor(Color.parseColor("#ff5c5c"));
+                            tileSixButton.setClickable(false);
                         }
                         tileSixButton.setTextSize(50f);
                         playerTurnMessage();
@@ -611,15 +574,19 @@ public class MainActivity extends Activity
 
                     else if (totalTurns % 2 == 0)
                     {
+                        totalTurns++;
+                        playerTwoMoveCount++;
                         tileSixButton.setActivated(true);
                         tileSixButton.setText(currentMove);
                         if (currentMove == "X")
                         {
                             tileSixButton.setBackgroundColor(Color.parseColor("#7598ff"));
+                            tileSixButton.setClickable(false);
                         }
                         else if (currentMove == "O")
                         {
                             tileSixButton.setBackgroundColor(Color.parseColor("#ff5c5c"));
+                            tileSixButton.setClickable(false);
                         }
                         tileSixButton.setTextSize(50f);
                         playerTurnMessage();
@@ -630,15 +597,19 @@ public class MainActivity extends Activity
                 case R.id.tileSevenButton:
                     if (totalTurns % 2 == 1)
                     {
+                        totalTurns++;
+                        playerOneMoveCount++;
                         tileSevenButton.setActivated(true);
                         tileSevenButton.setText(currentMove);
                         if (currentMove == "X")
                         {
                             tileSevenButton.setBackgroundColor(Color.parseColor("#7598ff"));
+                            tileSevenButton.setClickable(false);
                         }
                         else if (currentMove == "O")
                         {
                             tileSevenButton.setBackgroundColor(Color.parseColor("#ff5c5c"));
+                            tileSevenButton.setClickable(false);
                         }
                         tileSevenButton.setTextSize(50f);
                         playerTurnMessage();
@@ -646,15 +617,19 @@ public class MainActivity extends Activity
                     }
                     else if (totalTurns % 2 == 0)
                     {
+                        totalTurns++;
+                        playerTwoMoveCount++;
                         tileSevenButton.setActivated(true);
                         tileSevenButton.setText(currentMove);
                         if (currentMove == "X")
                         {
                             tileSevenButton.setBackgroundColor(Color.parseColor("#7598ff"));
+                            tileSevenButton.setClickable(false);
                         }
                         else if (currentMove == "O")
                         {
                             tileSevenButton.setBackgroundColor(Color.parseColor("#ff5c5c"));
+                            tileSevenButton.setClickable(false);
                         }
                         tileSevenButton.setTextSize(50f);
                         playerTurnMessage();
@@ -665,15 +640,19 @@ public class MainActivity extends Activity
                 case R.id.tileEightButton:
                     if (totalTurns % 2 == 1)
                     {
+                        totalTurns++;
+                        playerOneMoveCount++;
                         tileEightButton.setActivated(true);
                         tileEightButton.setText(currentMove);
                         if (currentMove == "X")
                         {
                             tileEightButton.setBackgroundColor(Color.parseColor("#7598ff"));
+                            tileEightButton.setClickable(false);
                         }
                         else if (currentMove == "O")
                         {
                             tileEightButton.setBackgroundColor(Color.parseColor("#ff5c5c"));
+                            tileEightButton.setClickable(false);
                         }
                         tileEightButton.setTextSize(50f);
                         playerTurnMessage();
@@ -681,15 +660,19 @@ public class MainActivity extends Activity
                     }
                     else if (totalTurns % 2 == 0)
                     {
+                        totalTurns++;
+                        playerTwoMoveCount++;
                         tileEightButton.setActivated(true);
                         tileEightButton.setText(currentMove);
                         if (currentMove == "X")
                         {
                             tileEightButton.setBackgroundColor(Color.parseColor("#7598ff"));
+                            tileEightButton.setClickable(false);
                         }
                         else if (currentMove == "O")
                         {
                             tileEightButton.setBackgroundColor(Color.parseColor("#ff5c5c"));
+                            tileEightButton.setClickable(false);
                         }
                         tileEightButton.setTextSize(50f);
                         playerTurnMessage();
@@ -700,15 +683,19 @@ public class MainActivity extends Activity
                 case R.id.tileNineButton:
                     if (totalTurns % 2 == 1)
                     {
+                        totalTurns++;
+                        playerOneMoveCount++;
                         tileNineButton.setActivated(true);
                         tileNineButton.setText(currentMove);
                         if (currentMove == "X")
                         {
                             tileNineButton.setBackgroundColor(Color.parseColor("#7598ff"));
+                            tileNineButton.setClickable(false);
                         }
                         else if (currentMove == "O")
                         {
                             tileNineButton.setBackgroundColor(Color.parseColor("#ff5c5c"));
+                            tileNineButton.setClickable(false);
                         }
                         tileNineButton.setTextSize(50f);
                         playerTurnMessage();
@@ -716,15 +703,19 @@ public class MainActivity extends Activity
                     }
                     else if (totalTurns % 2 == 0)
                     {
+                        totalTurns++;
+                        playerTwoMoveCount++;
                         tileNineButton.setActivated(true);
                         tileNineButton.setText(currentMove);
                         if (currentMove == "X")
                         {
                             tileNineButton.setBackgroundColor(Color.parseColor("#7598ff"));
+                            tileNineButton.setClickable(false);
                         }
                         else if (currentMove == "O")
                         {
                             tileNineButton.setBackgroundColor(Color.parseColor("#ff5c5c"));
+                            tileNineButton.setClickable(false);
                         }
                         tileNineButton.setTextSize(50f);
                         playerTurnMessage();
