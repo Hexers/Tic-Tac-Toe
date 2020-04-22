@@ -56,6 +56,6 @@
     <string name="namePlayerOne">John Doe 2</string>
     <string name="namePlayerTwo">John Doe 3</string>
 
-    <string name="game_messages_label">~Game Messages Go Here~</string>
+    <string name="game_messages_label"> </string>
     <string name="versus">vs.</string>
 </resources>
