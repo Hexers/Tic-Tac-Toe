@@ -23,9 +23,4 @@
         android:title="@string/player_two_name_title"
         android:summary="@string/player_two_name_summary"
         android:defaultValue="" />
-    <EditTextPreference
-        android:key="player_turn_name"
-        android:title="@string/player_turn_title"
-        android:summary="@string/player_turn_summary"
-        android:defaultValue="" />
 </PreferenceScreen>

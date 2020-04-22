@@ -183,20 +183,4 @@
         android:text="@string/new_game"
         android:textSize="20sp" />
 
-    <!-- Next Turn -->
-
-    <TextView
-        android:id="@+id/playerTurnTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/newGameButton"
-        android:layout_marginTop="20dp"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
-        android:padding="5dp"
-        android:text="@string/player_turn_name"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:visibility="invisible"
-        android:clickable="false" />
 </RelativeLayout>

@@ -30,7 +30,6 @@ public class MainActivity extends Activity
 
     private TextView namePlayerOneTextView;
     private TextView namePlayerTwoTextView;
-    private TextView playerTurnTextView;
     private TextView gameMessagesLabel;
     private Button tileOneButton;
     private Button tileTwoButton;
@@ -79,7 +78,6 @@ public class MainActivity extends Activity
 
         namePlayerOneTextView = (TextView) findViewById(R.id.namePlayerOneTextView);
         namePlayerTwoTextView = (TextView) findViewById(R.id.namePlayerTwoTextView);
-        playerTurnTextView = (TextView) findViewById(R.id.playerTurnTextView);
         gameMessagesLabel = (TextView) findViewById(R.id.gameMessagesLabel);
         tileOneButton = (Button) findViewById(R.id.tileOneButton);
         tileTwoButton = (Button) findViewById(R.id.tileTwoButton);
@@ -144,10 +142,6 @@ public class MainActivity extends Activity
         String playerTwoName = prefs.getString("player_two_name", "");
         namePlayerTwoTextView.setText(playerTwoName);
 
-        // get name turn
-        String playerTurn = prefs.getString("player_turn_name", "");
-        playerTurnTextView.setText(playerTurn);
-
         // get the instance variables
         billAmountString = prefs.getString("billAmountString", "");
         if (rememberTipPercent) {
@@ -204,6 +198,18 @@ public class MainActivity extends Activity
         //percentTextView.setText(percent.format(tipPercentToDisplay));
     }
 
+    public void disableButtons()
+    {
+        tileOneButton.setClickable(false);
+        tileTwoButton.setClickable(false);
+        tileThreeButton.setClickable(false);
+        tileFourButton.setClickable(false);
+        tileFiveButton.setClickable(false);
+        tileSixButton.setClickable(false);
+        tileSevenButton.setClickable(false);
+        tileEightButton.setClickable(false);
+        tileNineButton.setClickable(false);
+    }
     public void playerSwitch()
     {
         if (currentMove == "X")
@@ -269,10 +275,12 @@ public class MainActivity extends Activity
             if (tileOneText == "X" && tileTwoText == "X" && tileThreeText == "X")
             {
                 gameMessagesLabel.setText(playerOneName + " is the Winner!");
+                disableButtons();
             }
             else if (tileOneText == "O" && tileTwoText == "O" && tileThreeText == "O")
             {
                 gameMessagesLabel.setText(playerTwoName + " is the Winner!");
+                disableButtons();
             }
 
         }
@@ -282,10 +290,12 @@ public class MainActivity extends Activity
             if (tileFourText == "X" && tileFiveText == "X" && tileSixText == "X")
             {
                 gameMessagesLabel.setText(playerOneName + " is the Winner!");
+                disableButtons();
             }
             else if (tileFourText == "O" && tileFiveText == "O" && tileSixText == "O")
             {
                 gameMessagesLabel.setText(playerTwoName + " is the Winner!");
+                disableButtons();
             }
         }
 
@@ -294,10 +304,12 @@ public class MainActivity extends Activity
             if (tileSevenText == "X" && tileEightText == "X" && tileNineText == "X")
             {
                 gameMessagesLabel.setText(playerOneName + " is the Winner!");
+                disableButtons();
             }
             else if (tileSevenText == "O" && tileEightText == "O" && tileNineText == "O")
             {
                 gameMessagesLabel.setText(playerTwoName + " is the Winner!");
+                disableButtons();
             }
         }
 
@@ -307,10 +319,12 @@ public class MainActivity extends Activity
             if (tileOneText == "X" && tileFourText == "X" && tileSevenText == "X")
             {
                 gameMessagesLabel.setText(playerOneName + " is the Winner!");
+                disableButtons();
             }
             else if (tileOneText == "O" && tileFourText == "O" && tileSevenText == "O")
             {
                 gameMessagesLabel.setText(playerTwoName + " is the Winner!");
+                disableButtons();
             }
         }
 
@@ -319,10 +333,12 @@ public class MainActivity extends Activity
             if (tileTwoText == "X" && tileFiveText == "X" && tileEightText == "X")
             {
                 gameMessagesLabel.setText(playerOneName + " is the Winner!");
+                disableButtons();
             }
             else if (tileTwoText == "O" && tileFiveText == "O" && tileEightText == "O")
             {
                 gameMessagesLabel.setText(playerTwoName + " is the Winner!");
+                disableButtons();
             }
         }
 
@@ -331,10 +347,12 @@ public class MainActivity extends Activity
             if (tileThreeText == "X" && tileSixText == "X" && tileNineText == "X")
             {
                 gameMessagesLabel.setText(playerOneName + " is the Winner!");
+                disableButtons();
             }
             else if (tileThreeText == "O" && tileSixText == "O" && tileNineText == "O")
             {
                 gameMessagesLabel.setText(playerTwoName + " is the Winner!");
+                disableButtons();
             }
         }
 
@@ -344,10 +362,12 @@ public class MainActivity extends Activity
             if (tileOneText == "X" && tileFiveText == "X" && tileNineText == "X")
             {
                 gameMessagesLabel.setText(playerOneName + " is the Winner!");
+                disableButtons();
             }
             else if (tileOneText == "O" && tileFiveText == "O" && tileNineText == "O")
             {
                 gameMessagesLabel.setText(playerTwoName + " is the Winner!");
+                disableButtons();
             }
         }
 
@@ -356,10 +376,12 @@ public class MainActivity extends Activity
             if (tileThreeText == "X" && tileFiveText == "X" && tileSevenText == "X")
             {
                 gameMessagesLabel.setText(playerOneName + " is the Winner!");
+                disableButtons();
             }
             else if (tileThreeText == "O" && tileFiveText == "O" && tileSevenText == "O")
             {
                 gameMessagesLabel.setText(playerTwoName + " is the Winner!");
+                disableButtons();
             }
         }
 
