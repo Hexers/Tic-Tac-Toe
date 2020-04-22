@@ -189,12 +189,12 @@ public class MainActivity extends Activity
         {
             if (tileOneText == "X" && tileTwoText == "X" && tileThreeText == "X")
             {
-                gameMessagesLabel.setText(playerOneName + " is the Winner!");
+                gameMessagesLabel.setText(playerOneName + " wins!");
                 disableButtons();
             }
             else if (tileOneText == "O" && tileTwoText == "O" && tileThreeText == "O")
             {
-                gameMessagesLabel.setText(playerTwoName + " is the Winner!");
+                gameMessagesLabel.setText(playerTwoName + " wins!");
                 disableButtons();
             }
 
@@ -204,12 +204,12 @@ public class MainActivity extends Activity
         {
             if (tileFourText == "X" && tileFiveText == "X" && tileSixText == "X")
             {
-                gameMessagesLabel.setText(playerOneName + " is the Winner!");
+                gameMessagesLabel.setText(playerOneName + " wins!");
                 disableButtons();
             }
             else if (tileFourText == "O" && tileFiveText == "O" && tileSixText == "O")
             {
-                gameMessagesLabel.setText(playerTwoName + " is the Winner!");
+                gameMessagesLabel.setText(playerTwoName + " wins!");
                 disableButtons();
             }
         }
@@ -218,12 +218,12 @@ public class MainActivity extends Activity
         {
             if (tileSevenText == "X" && tileEightText == "X" && tileNineText == "X")
             {
-                gameMessagesLabel.setText(playerOneName + " is the Winner!");
+                gameMessagesLabel.setText(playerOneName + " wins!");
                 disableButtons();
             }
             else if (tileSevenText == "O" && tileEightText == "O" && tileNineText == "O")
             {
-                gameMessagesLabel.setText(playerTwoName + " is the Winner!");
+                gameMessagesLabel.setText(playerTwoName + " wins!");
                 disableButtons();
             }
         }
@@ -233,12 +233,12 @@ public class MainActivity extends Activity
         {
             if (tileOneText == "X" && tileFourText == "X" && tileSevenText == "X")
             {
-                gameMessagesLabel.setText(playerOneName + " is the Winner!");
+                gameMessagesLabel.setText(playerOneName + " wins!");
                 disableButtons();
             }
             else if (tileOneText == "O" && tileFourText == "O" && tileSevenText == "O")
             {
-                gameMessagesLabel.setText(playerTwoName + " is the Winner!");
+                gameMessagesLabel.setText(playerTwoName + " wins!");
                 disableButtons();
             }
         }
@@ -247,12 +247,12 @@ public class MainActivity extends Activity
         {
             if (tileTwoText == "X" && tileFiveText == "X" && tileEightText == "X")
             {
-                gameMessagesLabel.setText(playerOneName + " is the Winner!");
+                gameMessagesLabel.setText(playerOneName + " wins!");
                 disableButtons();
             }
             else if (tileTwoText == "O" && tileFiveText == "O" && tileEightText == "O")
             {
-                gameMessagesLabel.setText(playerTwoName + " is the Winner!");
+                gameMessagesLabel.setText(playerTwoName + " wins!");
                 disableButtons();
             }
         }
@@ -261,12 +261,12 @@ public class MainActivity extends Activity
         {
             if (tileThreeText == "X" && tileSixText == "X" && tileNineText == "X")
             {
-                gameMessagesLabel.setText(playerOneName + " is the Winner!");
+                gameMessagesLabel.setText(playerOneName + " wins!");
                 disableButtons();
             }
             else if (tileThreeText == "O" && tileSixText == "O" && tileNineText == "O")
             {
-                gameMessagesLabel.setText(playerTwoName + " is the Winner!");
+                gameMessagesLabel.setText(playerTwoName + " wins!");
                 disableButtons();
             }
         }
@@ -276,12 +276,12 @@ public class MainActivity extends Activity
         {
             if (tileOneText == "X" && tileFiveText == "X" && tileNineText == "X")
             {
-                gameMessagesLabel.setText(playerOneName + " is the Winner!");
+                gameMessagesLabel.setText(playerOneName + " wins!");
                 disableButtons();
             }
             else if (tileOneText == "O" && tileFiveText == "O" && tileNineText == "O")
             {
-                gameMessagesLabel.setText(playerTwoName + " is the Winner!");
+                gameMessagesLabel.setText(playerTwoName + " wins!");
                 disableButtons();
             }
         }
@@ -290,12 +290,12 @@ public class MainActivity extends Activity
         {
             if (tileThreeText == "X" && tileFiveText == "X" && tileSevenText == "X")
             {
-                gameMessagesLabel.setText(playerOneName + " is the Winner!");
+                gameMessagesLabel.setText(playerOneName + " wins!");
                 disableButtons();
             }
             else if (tileThreeText == "O" && tileFiveText == "O" && tileSevenText == "O")
             {
-                gameMessagesLabel.setText(playerTwoName + " is the Winner!");
+                gameMessagesLabel.setText(playerTwoName + " wins!");
                 disableButtons();
             }
         }

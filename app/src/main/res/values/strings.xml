@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Tic-Tac-Toe</string>
 
-    <string name="title_activity_tip_calculator">Tic-Tac-Toe</string>
+    <string name="title_activity_tic_tac_toe">Tic-Tac-Toe</string>
 
 
     <string name="menu_settings">Settings</string>
